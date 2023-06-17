@@ -22,9 +22,16 @@ main .wrp {
     background-position: center;
     aspect-ratio: 1;
 }
+.card > div > h3 {
+    mix-blend-mode: difference;
+}
+
+.play-button:hover {
+    cursor: pointer;
+}
 
 .album-name, .timecode {
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(0, 0, 0, 0.4);
     border-radius: 15px;
     padding: 0 5px;
 }

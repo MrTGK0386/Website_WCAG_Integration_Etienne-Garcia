@@ -1,27 +1,25 @@
-var urlList = [];
-function randomSelect(Array){
-    let final= Math.floor(Math.random() * Array.length);
-    return Array[final];
-}
-
+const playButtons = document.querySelectorAll(".play-button");
 //fonction principale
 function init (){
+    playMusicButton()
+    d3.json('data.json').then((data) => {
+        //parcours Json
+        for (var i = 0; i < data.length; i++){ // parcours du JSON
+            mkCard(data[getRandomInt(data.length)],i)
+            mkCarousel(data[i].album.images[0].url);
 
-        d3.json('data.json').then((data) => {
-            //parcours Json
-            console.log(data);
-            for (var i = 0; i < data.length; i++){ // parcours du JSON
-                mkCard(data[i],i)
-                mkCarousel(data[i].album.images[0].url);
+        }
+    });
 
-            }
-        });
 }
 //fonction d'usage
 function millisToMinutesAndSeconds(millis) {
     var minutes = Math.floor(millis / 60000);
     var seconds = ((millis % 60000) / 1000).toFixed(0);
     return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+}
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
 }
 
 //fonction de génération de contenu
@@ -44,6 +42,10 @@ function mkCard(data,i){
     songName.innerHTML = data.name.substr(0, 22);
     albumName.innerHTML = data.album.name.substr(0, 22);
     time.innerHTML = millisToMinutesAndSeconds(data.duration_ms);
+
+    //ajout du lien pour jouer la piste dans le alt du bouton play
+    const button = cardCollection[i].querySelector("img");
+    button.alt = data.preview_url;
 }
 function mkCarousel (url){
     if ("content" in document.createElement("template")){
@@ -63,15 +65,16 @@ function mkCarousel (url){
         //ajout des éléments sur la page html
         carouselContainer.appendChild(carouselContent);
     }
-
-
-    // Clone the new row and insert it into the table
-    /*const clone2 = template.content.cloneNode(true);
-    td = clone2.querySelectorAll("td");
-    td[0].textContent = "0384928528";
-    td[1].textContent = "Acme Kidney Beans 2";
-
-    tbody.appendChild(clone2);*/
+}
+function playMusicButton(){
+    console.log(playButtons);
+    playButtons[0].parentNode.addEventListener("click", function (e) {
+        // if (e.target.classList.contains("viewEdit")) {
+        if (e.target.nodeName.toLowerCase() === "img") {
+            const preview = new Audio(e.target.alt);
+            preview.play();
+        }
+    }, false);
 }
 
 init();
