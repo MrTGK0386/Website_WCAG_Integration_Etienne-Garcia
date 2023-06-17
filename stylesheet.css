@@ -1,0 +1,83 @@
+main .wrp {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+#custom-cards {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+#custom-cards .container .col {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.carousel_a {
+    width: 30%;
+    margin-top: 80px;
+}
+
+.carousel-control-prev {
+    left: -200px;
+}
+
+.carousel-control-prev-icon {
+    background-color: #212529;
+}
+
+.carousel-control-next {
+    right: -200px;
+}
+
+.carousel-control-next-icon {
+    background-color: #212529;
+}
+
+.carousel .carousel-item{
+    /*height: 600px;*/
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    /*object-position: left bottom;*/
+}
+
+.header {
+    background-color: darkorange;
+}
+
+.topper {
+    background-color: #fff;
+}
+
+.logo_container {
+    background-color: black;
+}
+
+.banner {
+    background-color: yellowgreen;
+}
+
+.resume {
+    background-color: blue;
+}
+
+.carousel {
+    background-color: red;
+}
+
+.graph1 {
+    background-color: aliceblue;
+}
+
+.graph2 {
+    background-color: blueviolet;
+}
+
+.player {
+    background-color: deeppink;
+}
