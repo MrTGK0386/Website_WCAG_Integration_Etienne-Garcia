@@ -4,6 +4,7 @@ function randomSelect(Array){
     return Array[final];
 }
 
+//fonction principale
 function init (){
 
         d3.json('data.json').then((data) => {
@@ -16,18 +17,35 @@ function init (){
             }
         });
 }
+//fonction d'usage
+function millisToMinutesAndSeconds(millis) {
+    var minutes = Math.floor(millis / 60000);
+    var seconds = ((millis % 60000) / 1000).toFixed(0);
+    return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+}
+
+//fonction de génération de contenu
 function mkCard(data,i){
+
     //selection du container
     const cardContainer = document.querySelector("#cardContainer");
     //selection des toutes les cartes dans une HTMLcollection
     const cardCollection = cardContainer.querySelectorAll(".col");
 
-    const img = cardCollection[i].firstChild;
-    const songName = img.firstChild.firstChild;
-    const album = img.firstChild.lastChild.firstChild.firstChild
+    //récupération des node
+    const img = cardCollection[i].querySelector(".card-cover");
+    console.log(img);
+    const songName = img.querySelector("h3");
+    const albumName = cardCollection[i].querySelector(".album-name");
+    console.log(albumName);
+    const time = cardCollection[i].querySelector(".timecode");
 
 
-    console.log(cardCollection[i]);
+    //modification des valeurs
+    img.style.backgroundImage = "url("+ data.album.images[0].url +")";
+    songName.innerHTML = data.name;
+    albumName.innerHTML = data.album.name;
+    time.innerHTML = millisToMinutesAndSeconds(data.duration_ms);
 }
 function mkCarousel (url){
     if ("content" in document.createElement("template")){
