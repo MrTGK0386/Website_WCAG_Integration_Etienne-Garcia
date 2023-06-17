@@ -34,17 +34,15 @@ function mkCard(data,i){
 
     //récupération des node
     const img = cardCollection[i].querySelector(".card-cover");
-    console.log(img);
     const songName = img.querySelector("h3");
     const albumName = cardCollection[i].querySelector(".album-name");
-    console.log(albumName);
     const time = cardCollection[i].querySelector(".timecode");
 
 
     //modification des valeurs
     img.style.backgroundImage = "url("+ data.album.images[0].url +")";
-    songName.innerHTML = data.name;
-    albumName.innerHTML = data.album.name;
+    songName.innerHTML = data.name.substr(0, 22);
+    albumName.innerHTML = data.album.name.substr(0, 22);
     time.innerHTML = millisToMinutesAndSeconds(data.duration_ms);
 }
 function mkCarousel (url){
