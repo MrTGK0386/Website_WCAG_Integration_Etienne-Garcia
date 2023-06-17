@@ -10,14 +10,24 @@ function init (){
             //parcours Json
             console.log(data);
             for (var i = 0; i < data.length; i++){ // parcours du JSON
-                //mkCard(data[i])
+                mkCard(data[i],i)
                 mkCarousel(data[i].album.images[0].url);
 
             }
         });
 }
-function mkCard(data){
+function mkCard(data,i){
+    //selection du container
+    const cardContainer = document.querySelector("#cardContainer");
+    //selection des toutes les cartes dans une HTMLcollection
+    const cardCollection = cardContainer.querySelectorAll(".col");
 
+    const img = cardCollection[i].firstChild;
+    const songName = img.firstChild.firstChild;
+    const album = img.firstChild.lastChild.firstChild.firstChild
+
+
+    console.log(cardCollection[i]);
 }
 function mkCarousel (url){
     if ("content" in document.createElement("template")){
@@ -34,8 +44,7 @@ function mkCarousel (url){
         const imgElement = carouselContent.querySelector('img');
         imgElement.src = url;
 
-        console.log(carouselContent);
-
+        //ajout des éléments sur la page html
         carouselContainer.appendChild(carouselContent);
     }
 
