@@ -1,5 +1,4 @@
-import Player from "@madzadev/audio-player";
-import "@madzadev/audio-player/dist/index.css";
+
 
 const playButtons = document.getElementsByClassName("play-button");
 //fonction principale
@@ -7,8 +6,11 @@ function init (){
     d3.json('data.json').then((data) => {
         //parcours Json
         for (var i = 0; i < data.length; i++){ // parcours du JSON
-            mkCard(data[getRandomInt(data.length)],i)
-            mkCarousel(data[i].album.images[0].url);
+            mkCard(data[getRandomInt(data.length)],i) //ajout contenu dans les cartes
+            mkCarousel(data[i]);//création des items avec template
+            if (i==0){ //ajout de la classe active sur le premier item du carousel
+                document.querySelector(".carousel-item").classList.add("active");
+            }
 
         }
     });
@@ -50,7 +52,7 @@ function mkCard(data,i){
     const button = cardCollection[i].querySelector("img");
     button.alt = data.preview_url;
 }
-function mkCarousel (url){
+function mkCarousel (data){
     if ("content" in document.createElement("template")){
 
         //selection du template
@@ -62,8 +64,12 @@ function mkCarousel (url){
         const carouselContent = carouselTemplate.content.cloneNode(true);
 
         //modification des éléments du templates
-        const imgElement = carouselContent.querySelector('img');
-        imgElement.src = url;
+        const imgElement = carouselContent.querySelector('#bgimgCarousel');
+        imgElement.style.backgroundImage = "url("+data.album.images[0].url+")";
+        const songName = carouselContent.querySelector("h3");
+        const albumName = carouselContent.querySelector(".album-name");
+        songName.innerHTML = data.name;
+        albumName.innerHTML = data.album.name;
 
         //ajout des éléments sur la page html
         carouselContainer.appendChild(carouselContent);
@@ -72,7 +78,6 @@ function mkCarousel (url){
 function playMusicButton(){
     console.log(playButtons);
     for (let i = 0 ; i>=0 ; i++) {
-        console.log(i);
         if (i>15){
             i=0;
         }
