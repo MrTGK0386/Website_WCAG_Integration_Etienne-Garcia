@@ -1,7 +1,6 @@
-const playButtons = document.querySelectorAll(".play-button");
+const playButtons = document.getElementsByClassName("play-button");
 //fonction principale
 function init (){
-    playMusicButton()
     d3.json('data.json').then((data) => {
         //parcours Json
         for (var i = 0; i < data.length; i++){ // parcours du JSON
@@ -10,6 +9,7 @@ function init (){
 
         }
     });
+    playMusicButton()
 
 }
 //fonction d'usage
@@ -68,13 +68,21 @@ function mkCarousel (url){
 }
 function playMusicButton(){
     console.log(playButtons);
-    playButtons[0].parentNode.addEventListener("click", function (e) {
-        // if (e.target.classList.contains("viewEdit")) {
-        if (e.target.nodeName.toLowerCase() === "img") {
-            const preview = new Audio(e.target.alt);
-            preview.play();
+    for (let i = 0 ; i>=0 ; i++) {
+        console.log(i);
+        if (i>15){
+            i=0;
         }
-    }, false);
+        playButtons[i].parentNode.addEventListener("click", function (e) {
+            if (e.target.nodeName.toLowerCase() === "img") {
+                const preview = new Audio(e.target.alt);
+                preview.play();
+            }
+        }, false);
+    }
+
+
 }
+
 
 init();
