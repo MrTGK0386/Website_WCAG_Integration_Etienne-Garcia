@@ -1,5 +1,4 @@
 
-
 const playButtons = document.getElementsByClassName("play-button");
 //fonction principale
 function init (){
@@ -31,6 +30,7 @@ function getRandomInt(max) {
 }
 
 
+
 //fonction de génération de contenu
 function mkCard(data,i){
 
@@ -48,8 +48,23 @@ function mkCard(data,i){
 
     //modification des valeurs
     img.style.backgroundImage = "url("+ data.album.images[0].url +")";
-    songName.innerHTML = data.name.substr(0, 22);
-    albumName.innerHTML = data.album.name.substr(0, 22);
+    songName.innerHTML = data.name.replace(/^(.{10}[^\s]*).*/, "$1");
+    songName.setAttribute("data-bs-title", data.name);
+
+    //jquery pour charger le tooltip
+
+    $(songName).ready(function (){
+        $('[data-bs-toggle="tooltip"]').tooltip();
+    });
+
+    albumName.innerHTML = data.album.name.replace(/^(.{10}[^\s]*).*/, "$1");
+    albumName.setAttribute("data-bs-title", data.album.name);
+
+    //jquery pour charger le tooltip
+    $(albumName).ready(function (){
+        $('[data-bs-toggle="tooltip"]').tooltip();
+    });
+
     time.innerHTML = millisToMinutesAndSeconds(data.duration_ms);
 
     //ajout du lien pour jouer la piste dans le alt du bouton play
