@@ -89,6 +89,7 @@ function playMusicButton(){
             if (e.target.nodeName.toLowerCase() === "img") {
                 song.src = e.target.alt; //change la source du lecteur avec l'alt du bouton
                 player.load();
+                Playervisibility.classList.remove("hidden");
                 player.play();
             }
         }, false);

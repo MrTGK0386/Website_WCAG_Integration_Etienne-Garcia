@@ -12,6 +12,7 @@ var currentTime = audioPlayer.querySelector('.current-time');
 var totalTime = audioPlayer.querySelector('.total-time');
 var speaker = audioPlayer.querySelector('#speaker');
 
+var Playervisibility = document.getElementById("playervisi");
 var draggableClasses = ['pin'];
 var currentlyDragged = null;
 
@@ -160,6 +161,7 @@ function togglePlay() {
     } else {
         playPause.attributes.d.value = "M18 12L0 24V0";
         player.pause();
+        Playervisibility.classList.add("hidden");
     }
 }
 
