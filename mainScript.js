@@ -14,7 +14,10 @@ function init (){
 
         }
     });
-    playMusicButton()
+    player.volume = 0.3;
+    playMusicButton();
+
+
 
 }
 //fonction d'usage
@@ -26,6 +29,7 @@ function millisToMinutesAndSeconds(millis) {
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
+
 
 //fonction de génération de contenu
 function mkCard(data,i){
@@ -83,14 +87,14 @@ function playMusicButton(){
         }
         playButtons[i].parentNode.addEventListener("click", function (e) {
             if (e.target.nodeName.toLowerCase() === "img") {
-                const preview = new Audio(e.target.alt);
-                preview.play();
+                song.src = e.target.alt; //change la source du lecteur avec l'alt du bouton
+                player.load();
+                player.play();
             }
         }, false);
     }
 
 
 }
-
 
 init();
