@@ -97,7 +97,6 @@ function mkCarousel (data){
     }
 }
 function playMusicButton(){
-    console.log(playButtons);
     for (let i = 0 ; i>=0 ; i++) {
         if (i>15){
             i=0;
