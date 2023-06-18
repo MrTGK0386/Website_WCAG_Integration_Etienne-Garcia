@@ -3,8 +3,6 @@ function mkGraph1(donnee) {
     for (let f = 0; f < donnee.length; f++){
         artistes.push(donnee[f].artists[0].name)
     }
-    console.log(artistes);
-
     const doubleDeck = numberOfEveryIndex(artistes);
     const labels = doubleDeck[0];
     const list = doubleDeck [1];
@@ -35,16 +33,25 @@ function mkGraph1(donnee) {
 }
 
 function mkGraph2 (donnee){
+    const style = [];
+    for (let f = 0; f < donnee.length; f++){
+        style.push(donnee[f].album.release_date.split("-")[0])
+    }
+    console.log(style);
+
+    const doubleStyle = numberOfEveryIndex(style);
+    const year = doubleStyle[0];
+    const list = doubleStyle [1];
 
     const ctx = document.getElementById('graph2');
     const data = {
-        "labels": ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        "labels": year,
         "datasets": [
             {
                 "label": "test",
-                "backgroundColor": "#aaadff",
+                "backgroundColor": "#007BFF",
                 "fill": true,
-                "data": [12, 19, 3, 5, 2, 3],
+                "data": list,
                 "borderColor": "#ffffff",
                 "borderWidth": "1"
             },
