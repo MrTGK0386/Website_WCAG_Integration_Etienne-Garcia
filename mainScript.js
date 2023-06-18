@@ -1,3 +1,6 @@
+import Player from "@madzadev/audio-player";
+import "@madzadev/audio-player/dist/index.css";
+
 const playButtons = document.getElementsByClassName("play-button");
 //fonction principale
 function init (){

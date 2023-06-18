@@ -58,11 +58,9 @@ main .wrp {
 }
 
 .carousel .carousel-item{
-    /*height: 600px;*/
     width: 100%;
     aspect-ratio: 1;
     object-fit: cover;
-    /*object-position: left bottom;*/
 }
 
 .header {
@@ -96,6 +94,5 @@ main .wrp {
 .graph2 {
     background-color: blueviolet;
 }
-
 
 
