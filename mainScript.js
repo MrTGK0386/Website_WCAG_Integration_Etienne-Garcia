@@ -3,6 +3,9 @@ const playButtons = document.getElementsByClassName("play-button");
 //fonction principale
 function init (){
     d3.json('data.json').then((data) => {
+        //parcours
+        mkGraph1(data);
+        mkGraph2(data);
         //parcours Json
         for (var i = 0; i < data.length; i++){ // parcours du JSON
             mkCard(data[getRandomInt(data.length)],i) //ajout contenu dans les cartes
@@ -10,7 +13,6 @@ function init (){
             if (i==0){ //ajout de la classe active sur le premier item du carousel
                 document.querySelector(".carousel-item").classList.add("active");
             }
-
         }
     });
     player.volume = 0.3;

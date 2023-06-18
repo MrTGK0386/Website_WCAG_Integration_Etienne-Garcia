@@ -88,12 +88,22 @@ main .wrp {
     background-color: red;
 }
 
-.graph1 {
+#graph1-warp {
     background-color: aliceblue;
+    width: 50%;
+    z-index: 9;
 }
 
-.graph2 {
+#graph2-warp {
     background-color: blueviolet;
+    width: 50%;
+    z-index: 9;
+}
+
+.graphiques {
+    margin-block: 10px;
+    display: flex;
+    flex-direction: row;
 }
 
 #playervisi.hidden {
