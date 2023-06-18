@@ -108,15 +108,28 @@ main .wrp {
     display:none ;
 }
 
+#lNavText {
+    margin-right: 80px;
+}
+
+.holder.fixed {
+    position: fixed;
+    bottom: 15px;
+}
+
+.holder.unfixed {
+    position: absolute;
+    top: 3625px;
+}
+
 .holder {
     display: flex;
-    position: fixed;
     flex-direction: column;
     align-items: center;
-    bottom: 0px;
     left: 50%;
     right: 50%;
 }
+
 
 .audio.green-audio-player {
     width: 400px;

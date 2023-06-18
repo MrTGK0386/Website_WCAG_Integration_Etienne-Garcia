@@ -9,16 +9,32 @@
 </head>
 <body>
 <div class="header">
-    <div class="topper">
-        <div class="logo_container">
-            <img class="logo" src="">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-primary fixed-top" aria-label="Third navbar example">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Chartify</a>
+            <div class="collapse navbar-collapse" id="navbarsExample03">
+                <ul class="navbar-nav ms-auto mb-2 mb-sm-0" id="lNavText">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="titre">
-        </div>
-    </div>
-    <div class="banner">
-
-    </div>
+    </nav>
 </div>
 
 <main>
@@ -54,10 +70,10 @@
     <div class="wrp">
         <div class="container graphiques">
             <div id="graph1-warp" >
-                <canvas id="graph1"></canvas>
+                <canvas id="graph1" data-bs-toggle="modal" data-bs-target="#modalA"></canvas>
             </div>
             <div id="graph2-warp" >
-                <canvas id="graph2"></canvas>
+                <canvas id="graph2" data-bs-toggle="modal" data-bs-target="#modalB"></canvas>
             </div>
 
         </div>
@@ -386,7 +402,7 @@
         </div>
 
         <div id="playervisi" class="player hidden">
-            <div class="holder">
+            <div class="holder fixed">
                 <div class="audio green-audio-player">
                     <div class="loading">
                         <div class="spinner"></div>
@@ -429,19 +445,34 @@
             </div>
         </div>
 
-        <div class="modal" tabindex="-1">
-            <div class="modal-dialog" role="document">
+        <div class="modal fade" id="modalA" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content rounded-4 shadow">
                     <div class="modal-header border-bottom-0">
-                        <h1 class="modal-title fs-5">Modal title</h1>
+                        <h1 class="modal-title fs-5">Mes artiste préférés</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body py-0">
-                        <p>This is a modal sheet, a variation of the modal that docs itself to the bottom of the viewport like the newer share sheets in iOS.</p>
+                        <p>Ce graphique montre les artistes que j'écoute le plus en fonction de leur présence dans ma playlist.</p>
                     </div>
                     <div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
-                        <button type="button" class="btn btn-lg btn-primary">Save changes</button>
-                        <button type="button" class="btn btn-lg btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-lg btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modalB" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content rounded-4 shadow">
+                    <div class="modal-header border-bottom-0">
+                        <h1 class="modal-title fs-5">Les années que j'écoute le plus</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body py-0">
+                        <p>Ce graphique montre de quelles années date les morceaux que j'écoute, on pourrait peut-être établir une tendance.</p>
+                    </div>
+                    <div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
+                        <button type="button" class="btn btn-lg btn-secondary" data-bs-dismiss="modal">Fermer</button>
                     </div>
                 </div>
             </div>

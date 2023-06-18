@@ -1,5 +1,5 @@
-
 const playButtons = document.getElementsByClassName("play-button");
+//const modalInput = document.querySelectorAll("canvas");
 //fonction principale
 function init (){
     d3.json('data.json').then((data) => {
@@ -110,8 +110,31 @@ function playMusicButton(){
             }
         }, false);
     }
+}
+function modalOpen(){
+    const modal = document.getElementById("mymodal");
+    for (let i = 0 ; i>=0 ; i++){
+        if (i>2){
+            i=0;
+        }
+        modalInput[i].addEventListener("click", function (e){
 
+        })
 
+    }
 }
 
+const pos = document.querySelector(".holder");
+window.addEventListener("scroll", function (e){
+    var scroll = this.scrollY;
+    if (scroll > 2700) {
+        pos.classList.add("unfixed");
+        pos.classList.remove("fixed");
+    } else {
+        pos.classList.add("fixed");
+        pos.classList.remove("unfixed");
+    }
+})
+
 init();
+
